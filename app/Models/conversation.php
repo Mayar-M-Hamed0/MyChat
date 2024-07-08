@@ -15,13 +15,15 @@ class conversation extends Model
             'created_by'
         ];
     public function participants(){
-        return $this->belongsToMany(User::class,'participant');
+        return $this->belongsToMany(User::class,'participants');
     }
 
     public function messages(){
         return $this->hasMany(message::class);
     }
-
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 
 
 }

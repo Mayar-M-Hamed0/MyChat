@@ -13,8 +13,13 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('conversation_id')->constrained('conversations')->onDelete('cascade');
-            $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('conversation_id')
+                  ->constrained('conversations')
+                  ->onDelete('cascade');
+            $table->foreignId('user_id')
+                  ->nullable()
+                  ->constrained('users')
+                  ->nullOnDelete();
             $table->text('message');
             $table->string('file_path')->nullable();
             $table->enum('type',['text','attachment'])->default('text');

@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->enum('type', ['private', 'group'])->default('private');
-            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('created_by')
+                 ->nullable()
+                 ->constrained('users')
+                 ->nullOnDelete();
             $table->timestamps();
         });
     }

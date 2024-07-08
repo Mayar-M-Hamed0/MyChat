@@ -50,7 +50,7 @@ public function message(){
 }
 
 public function conversation(){
-    return $this->belongsToMany(conversation::class,'participants')->withPivot('role');
+    return $this->belongsToMany(conversation::class,'participants')->latest('last_message_id')->withPivot('role');
 }
 
 public function reactions(){
